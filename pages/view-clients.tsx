@@ -1,7 +1,12 @@
-import React from 'react'
+import { Space } from "antd";
+import React from "react";
+import PageTitle from "./components/PageTitle";
 
 export default function ViewClients() {
   return (
-    <div>view-clients</div>
-  )
+    <>
+      <PageTitle title="View Clients"  route={["Client Master" , "View Client"]}/>
+      
+    </>
+  );
 }

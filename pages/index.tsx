@@ -1,5 +1,11 @@
+import { useEffect } from "react";
 
 export default function Home() {
   
-  return <h2 >Testing</h2>
+  // redirecting the page to view-clients page on load
+  useEffect(() => {
+    window.open('/view-clients', '_self')
+  }, [])
+  
+
 }

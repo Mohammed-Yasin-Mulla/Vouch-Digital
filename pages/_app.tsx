@@ -4,15 +4,14 @@ import type { AppProps } from "next/app";
 import styled from "styled-components";
 
 import {
-  UploadOutlined,
   UserOutlined,
   SearchOutlined,
-  VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Input, Typography } from "antd";
 import React from "react";
 import AvatarWithDetails from "./components/AvatarWithDetails";
 import Link from "next/link";
+import { StyledSearchBar } from "./components/StyledSearchBar";
 const { Sider, Content } = Layout;
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -30,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       >
         <div>
           <StyledTitle>Company Name</StyledTitle>
-          <StyledSearchBar addonBefore={<SearchOutlined />} />
+          <StyledSearchBar width={304} placeholder="Search Modules" addonBefore={<SearchOutlined />} />
         </div>
 
         <StyledSubTitle level={5} style={{ color: "#B8BABC" }}>
@@ -83,6 +82,3 @@ const StyledTitle = styled(Typography.Text)`
   margin-top: 16px;
 `;
 
-const StyledSearchBar = styled(Input)`
-  width: 304px;
-`;
