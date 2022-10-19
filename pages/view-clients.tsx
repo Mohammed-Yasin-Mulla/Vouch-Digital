@@ -48,7 +48,15 @@ export default function ViewClients() {
         title="View Clients"
         route={["Client Master", "View Client"]}
       />
-      <Wrapper>
+      <div
+        style={{
+          display: "flex",
+          marginTop: "40px",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "20px",
+        }}
+      >
         <StyledSearchBar
           placeholder="Search"
           width={300}
@@ -67,7 +75,7 @@ export default function ViewClients() {
             Export
           </Button>
         </ButtonWrapper>
-      </Wrapper>
+      </div>
       <Table
         columns={columns}
         dataSource={dummyData}
@@ -76,14 +84,6 @@ export default function ViewClients() {
     </>
   );
 }
-
-const Wrapper = styled.div`
-  display: flex !important;
-  margin-top: 40px;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-`;
 
 const ButtonWrapper = styled.div`
   display: flex;
