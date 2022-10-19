@@ -20,11 +20,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Sider
         width="336"
         style={{
-          padding: "16px",
-          height: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
+          overflow: 'auto',
+          height: '100vh',
+          position: 'fixed',
+          left: 0,
+          top: 0,
+          bottom: 0,
         }}
       >
         <div>
@@ -55,13 +56,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           <AvatarWithDetails />
         </div>
       </Sider>
-      <Layout className="site-layout">
+      <Layout className="site-layout" style={{ marginLeft: 336 }}>
         <Content
           className="site-layout-background"
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-          }}
+          style={{ margin: '24px 16px 0', overflow: 'initial' , padding: 24}}
         >
           <Component {...pageProps} />
         </Content>
