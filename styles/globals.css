@@ -32,10 +32,3 @@ body {
 .navbar-company-name{
   color : white
 }
-
-.ant-select-selector{
-  border: none !important;
-  border-radius: 0px !important;
-  justify-content: center !important;
-
-}
