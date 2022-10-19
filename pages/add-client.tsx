@@ -1,5 +1,9 @@
 import { Tabs } from "antd";
 import React, { useState } from "react";
+import CreateProfile from "./components/AddClient/CreateProfile";
+import ModulesSetup from "./components/AddClient/ModulesSetup";
+import PaymentSetup from "./components/AddClient/PaymentSetup";
+import ThemeSetup from "./components/AddClient/ThemeSetup";
 import PageTitle from "./components/PageTitle";
 
 export enum TabName {
@@ -38,22 +42,22 @@ export default function AddClient() {
           {
             label: TabName.create_profile,
             key: TabShortName.CREATE_PROFILE,
-            children: `Content of Tab Pane 1`,
+            children: <CreateProfile />,
           },
           {
             label: TabName.payment_setup,
             key: TabShortName.PAYMENT_SETUP,
-            children: `Content of Tab Pane 2`,
+            children: <PaymentSetup />,
           },
           {
             label: TabName.theme_setup,
             key: TabShortName.THEME_SETUP,
-            children: `Content of Tab Pane 3`,
+            children: <ThemeSetup />,
           },
           {
             label: TabName.modules_setup,
             key: TabShortName.MODULES_SETUP,
-            children: `Content of Tab Pane 3`,
+            children: <ModulesSetup />,
           },
         ]}
       />
