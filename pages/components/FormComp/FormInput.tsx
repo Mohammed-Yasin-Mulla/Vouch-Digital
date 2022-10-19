@@ -7,18 +7,33 @@ interface FormInputProps {
   name: string;
   placeHolder?: string;
   rule?: string;
+  defaultValue?: string;
   width?: string;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
+  marginBottom?: string;
 }
 
 export default function FormInput(props: FormInputProps) {
-  const { label, name, rule, placeHolder, width, prefix, suffix } = props;
+  const {
+    label,
+    name,
+    rule,
+    placeHolder,
+    width,
+    prefix,
+    suffix,
+    defaultValue,
+    marginBottom,
+  } = props;
   return (
     <Form.Item
       label={label}
       name={name}
-      style={{ width: width ? width : "100%" }}
+      style={{
+        width: width ? width : "100%",
+        marginBottom: marginBottom && marginBottom,
+      }}
       rules={[
         {
           required: rule !== undefined && rule !== "" ? true : false,
@@ -30,6 +45,7 @@ export default function FormInput(props: FormInputProps) {
         prefix={prefix}
         suffix={suffix}
         width={width}
+        defaultValue={defaultValue}
         placeholder={`${placeHolder} ${
           rule !== undefined && rule !== "" ? "*" : ""
         }`}
