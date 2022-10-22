@@ -6,12 +6,19 @@ import { PlusOutlined } from "@ant-design/icons";
 import FormInput from "../FormComp/FormInput";
 import FormSelect from "../FormComp/FormSelect";
 import SaveAndContinue from "../SaveAndContinue";
+import { TabShortName } from "../../pages/add-client";
 
-export default function CreateProfile() {
+interface CreateProfileProps {
+  onChangeTab: (key: string) => void;
+}
+
+export default function CreateProfile(props : CreateProfileProps) {
+  const {onChangeTab} = props;
   const [form] = Form.useForm();
 
   const onFinish = (values: any) => {
     console.log("Success:", values);
+    onChangeTab(TabShortName.PAYMENT_SETUP);
   };
 
   const onFinishFailed = (errorInfo: any) => {

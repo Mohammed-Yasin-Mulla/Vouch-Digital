@@ -9,7 +9,7 @@ import {
     DeleteOutlined,
     UserOutlined
   } from "@ant-design/icons";
-import { TableData } from "../../view-clients";
+import { TableData } from "../../pages/view-clients";
 
 
 const StyledOptionButton = styled(Button)`
@@ -57,7 +57,7 @@ const menu = (
   
   
 
-export const columns: ColumnsType<TableData> = [
+export  const columns: ColumnsType<TableData> = [
   {
     title: "Company Name",
     dataIndex: "companyName",

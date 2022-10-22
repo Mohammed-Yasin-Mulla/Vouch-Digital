@@ -1,4 +1,4 @@
-import { TableData } from "../../view-clients";
+import { TableData } from "../../pages/view-clients";
 
 export 
 const dummyData: TableData[] = [

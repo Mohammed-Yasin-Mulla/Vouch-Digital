@@ -3,8 +3,15 @@ import { CheckCircleTwoTone } from "@ant-design/icons";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Typography } from "antd";
 import styled from "styled-components";
+import { TabName, TabShortName } from "../../pages/add-client";
 
-export default function Success() {
+
+interface SuccessProps {
+  onChangeTab: (key: string) => void;
+}
+
+export default function Success(props: SuccessProps) {
+  const {onChangeTab} = props;
   return (
     <>
       <TopWrapper>
@@ -18,8 +25,8 @@ export default function Success() {
           </StyledTypography>
         </TextWrapper>
         <ButtonWrapper>
-          <Button>Go to Client Master</Button>
-          <Button type="primary">Add More Clients</Button>
+          <Button onClick={() => onChangeTab(TabShortName.CREATE_PROFILE)}>Go to Client Master</Button>
+          <Button onClick={() => onChangeTab(TabShortName.CREATE_PROFILE)} type="primary">Add More Clients</Button>
         </ButtonWrapper>
       </TopWrapper>
 

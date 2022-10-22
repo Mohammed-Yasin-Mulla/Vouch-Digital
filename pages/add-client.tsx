@@ -1,11 +1,11 @@
 import { Tabs } from "antd";
 import React, { useState } from "react";
-import CreateProfile from "./components/AddClient/CreateProfile";
-import ModulesSetup from "./components/AddClient/ModulesSetup";
-import PaymentSetup from "./components/AddClient/PaymentSetup";
-import Success from "./components/AddClient/Success";
-import ThemeSetup from "./components/AddClient/ThemeSetup";
-import PageTitle from "./components/PageTitle";
+import CreateProfile from "../components/AddClient/CreateProfile";
+import ModulesSetup from "../components/AddClient/ModulesSetup";
+import PaymentSetup from "../components/AddClient/PaymentSetup";
+import Success from "../components/AddClient/Success";
+import ThemeSetup from "../components/AddClient/ThemeSetup";
+import PageTitle from "../components/PageTitle";
 
 export enum TabName {
   create_profile = "Create Profile",
@@ -25,7 +25,7 @@ export enum TabShortName {
 
 export default function AddClient() {
   const [currentTab, setCurrentTab] = useState<keyof typeof TabName>(
-    TabShortName.SUCCESS
+    TabShortName.CREATE_PROFILE
   );
 
   const onChangeTab = (key: string) => {
@@ -41,38 +41,33 @@ export default function AddClient() {
       {currentTab !== TabShortName.SUCCESS && (
         <Tabs
           activeKey={currentTab}
-          onChange={onChangeTab}
           items={[
             {
               label: TabName.create_profile,
               key: TabShortName.CREATE_PROFILE,
-              children: <CreateProfile />,
+              children: <CreateProfile onChangeTab={onChangeTab} />,
             },
             {
               label: TabName.payment_setup,
               key: TabShortName.PAYMENT_SETUP,
-              children: <PaymentSetup />,
+              children: <PaymentSetup onChangeTab={onChangeTab}  />,
             },
             {
               label: TabName.theme_setup,
               key: TabShortName.THEME_SETUP,
-              children: <ThemeSetup />,
+              children: <ThemeSetup onChangeTab={onChangeTab}  />,
             },
             {
               label: TabName.modules_setup,
               key: TabShortName.MODULES_SETUP,
-              children: <ModulesSetup />,
+              children: <ModulesSetup  onChangeTab={onChangeTab} />,
             },
-            {
-              label: TabName.modules_setup,
-              key: TabShortName.MODULES_SETUP,
-              children: <ModulesSetup />,
-            },
+           
           ]}
         />
       )}
 
-      {currentTab === TabShortName.SUCCESS && <Success />}
+      {currentTab === TabShortName.SUCCESS && <Success onChangeTab={onChangeTab} />}
     </>
   );
 }

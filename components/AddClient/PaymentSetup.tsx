@@ -1,10 +1,15 @@
 import { Checkbox, Form, Radio } from "antd";
 import React from "react";
 import styled from "styled-components";
+import { TabShortName } from "../../pages/add-client";
 import FormInput from "../FormComp/FormInput";
 import FormSelect from "../FormComp/FormSelect";
 import SaveAndContinue from "../SaveAndContinue";
 import TabTitle from "../TabTitle";
+
+interface ModulesSetupProps {
+  onChangeTab: (key: string) => void;
+}
 
 const CheckboxItem = [
   {
@@ -40,11 +45,13 @@ const RadioItem = [
   },
 ];
 
-export default function PaymentSetup() {
+export default function PaymentSetup(props: ModulesSetupProps) {
+  const { onChangeTab } = props;
   const [form] = Form.useForm();
 
   const onFinish = (values: any) => {
     console.log("Success:", values);
+    onChangeTab(TabShortName.THEME_SETUP);
   };
 
   const onFinishFailed = (errorInfo: any) => {

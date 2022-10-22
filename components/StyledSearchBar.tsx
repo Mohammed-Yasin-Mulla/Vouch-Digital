@@ -9,7 +9,7 @@ interface StyledSearchBarProps {
   width?: number;
 }
 
-export function StyledSearchBar(props: StyledSearchBarProps) {
+export default function StyledSearchBar(props: StyledSearchBarProps) {
   const { addonBefore, placeholder, width } = props;
   return <StyledSearchBarComp placeholder={placeholder} width={width} addonBefore={addonBefore} />;
 }

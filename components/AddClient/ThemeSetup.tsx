@@ -5,6 +5,11 @@ import styled from "styled-components";
 import FormInput from "../FormComp/FormInput";
 import SaveAndContinue from "../SaveAndContinue";
 import TabTitle from "../TabTitle";
+import { TabShortName } from "../../pages/add-client";
+
+interface ModulesSetupProps {
+  onChangeTab: (key: string) => void;
+}
 
 const RadioItem = [
   {
@@ -21,11 +26,13 @@ const RadioItem = [
   },
 ];
 
-export default function ThemeSetup() {
+export default function ThemeSetup(props: ModulesSetupProps) {
+  const { onChangeTab } = props;
   const [form] = Form.useForm();
 
   const onFinish = (values: any) => {
     console.log("Success:", values);
+    onChangeTab(TabShortName.MODULES_SETUP);
   };
 
   const onFinishFailed = (errorInfo: any) => {

@@ -1,9 +1,9 @@
 import { Button, Dropdown, Menu, Space, Table } from "antd";
 import React from "react";
-import PageTitle from "./components/PageTitle";
-import { StyledSearchBar } from "./components/StyledSearchBar";
-import { columns } from "./components/ViewClient/columns";
-import { dummyData } from "./components/ViewClient/dummyData";
+import PageTitle from "../components/PageTitle";
+import StyledSearchBar  from "../components/StyledSearchBar";
+import { columns } from "../components/ViewClient/columns";
+import { dummyData } from "../components/ViewClient/dummyData";
 import {
   SearchOutlined,
   DownOutlined,

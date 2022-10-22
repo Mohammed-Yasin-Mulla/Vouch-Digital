@@ -5,6 +5,11 @@ import React from "react";
 import SaveAndContinue from "../SaveAndContinue";
 import TabTitle from "../TabTitle";
 import styled from "styled-components";
+import { TabShortName } from "../../pages/add-client";
+
+interface CreateProfileProps {
+  onChangeTab: (key: string) => void;
+}
 
 const CheckboxItem = [
   {
@@ -68,16 +73,14 @@ const CheckboxItem2 = [
   },
 ];
 
-export default function ModulesSetup() {
+export default function ModulesSetup(props: CreateProfileProps) {
+  const { onChangeTab } = props;
   const [form] = Form.useForm();
 
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
+  const onFinish = () => {
+    onChangeTab(TabShortName.SUCCESS);
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-  };
   return (
     <>
       <TabTitle
@@ -112,26 +115,23 @@ export default function ModulesSetup() {
           style={{ width: "100%" }}
         >
           {/* <Checkbox.Group> */}
-            {CheckboxItem2.map((item, index) => {
-              return (
-                <>
-                  <Checkbox
-                    key={index}
-                    value={item.value}
-                  >
-                    {item.label}
-                  </Checkbox>
-                  <br />
-                  <br />
-                </>
-              );
-            })}
+          {CheckboxItem2.map((item, index) => {
+            return (
+              <>
+                <Checkbox key={index} value={item.value}>
+                  {item.label}
+                </Checkbox>
+                <br />
+                <br />
+              </>
+            );
+          })}
           {/* </Checkbox.Group> */}
         </Card>
       </Wrapper>
 
       <SaveAndContinue
-        saveAndContinue={() => form.submit()}
+        saveAndContinue={() => onFinish()}
         reset={() => form.resetFields()}
       />
     </>
