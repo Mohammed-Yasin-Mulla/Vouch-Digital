@@ -5,14 +5,33 @@ import styled from "styled-components";
 
 import { UserOutlined, SearchOutlined } from "@ant-design/icons";
 import { Layout, Menu, Input, Typography } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AvatarWithDetails from "../components/AvatarWithDetails";
 import Link from "next/link";
 import StyledSearchBar from "../components/StyledSearchBar";
 const { Sider, Content } = Layout;
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
+  const [login, setLogin] = useState(false);
+
+  let token = null as string | null;
+
+  if (typeof window !== "undefined") {
+    token = localStorage.getItem("token");
+  }
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("token");
+      if (token !== null) {
+        setLogin(true);
+      } else {
+        setLogin(false);
+      }
+    }
+  }, [login, token]);
+
+  return login ? (
     <Layout className="layout">
       <Sider
         width="336"
@@ -64,6 +83,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Content>
       </Layout>
     </Layout>
+  ) : (
+    <Component {...pageProps} />
   );
 }
 export default MyApp;
