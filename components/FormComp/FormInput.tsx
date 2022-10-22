@@ -5,7 +5,7 @@ import styled from "styled-components";
 interface FormInputProps {
   label?: string;
   name: string;
-  placeHolder?: string;
+  placeHolder: string;
   rule?: string;
   defaultValue?: string;
   width?: string;
