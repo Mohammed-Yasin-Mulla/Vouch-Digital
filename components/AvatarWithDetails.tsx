@@ -25,12 +25,10 @@ export default function AvatarWithDetails() {
 
 const Wrapper = styled.div`
     border-top: 1px solid #B8BABC;
-    margin-top: 100%;
     padding: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
     `
 
 const AvatarWrapper = styled.div`

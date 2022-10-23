@@ -36,7 +36,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       if (token !== null) {
         setLogin(true);
         router.replace("/view-clients");
-
       } else {
         setLogin(false);
         router.replace("/");
@@ -55,7 +54,12 @@ function MyApp({ Component, pageProps }: AppProps) {
             position: "fixed",
             left: 0,
             top: 0,
-            bottom: 0,
+            padding: "24px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            
+            
           }}
         >
           <div>
@@ -84,9 +88,15 @@ function MyApp({ Component, pageProps }: AppProps) {
               <Link href={"/add-client"}>Add Client</Link>
             </Menu.Item>
           </Menu>
-          <div style={{ alignSelf: "flex-end" }}>
-            <AvatarWithDetails />
-          </div>
+            <div style={{
+
+               position: "absolute",
+               bottom: 0,
+                width: "90%",
+
+            }}>
+              <AvatarWithDetails />
+            </div>
         </Sider>
         <Layout className="site-layout" style={{ marginLeft: 336 }}>
           <Content
@@ -114,5 +124,5 @@ const StyledTitle = styled(Typography.Text)`
   color: white;
   font-size: 20px;
   font-weight: 700;
-  margin-top: 16px;
+  margin-top: 24px;
 `;
