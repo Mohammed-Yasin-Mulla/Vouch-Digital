@@ -4,6 +4,12 @@ import router from "next/router";
 import React from "react";
 import styled from "styled-components";
 import FormInput from "../components/FormComp/FormInput";
+import { useLoginAPI } from "../hooks/login";
+
+interface FormValues {
+  username: string;
+  password: string;
+}
 
 export default function index() {
   const onClick = () => {
@@ -11,8 +17,15 @@ export default function index() {
     localStorage.setItem("token", "red");
   };
 
-  const OnFinishHandler = (values: any) => {
-    console.log(values);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { mutate, isLoading } = useLoginAPI();
+
+  const OnFinishHandler = (values: FormValues) => {
+    console.log("values", values);
+    mutate({
+      username: values.username,
+      password: values.password,
+    });
   };
 
   const OnFinishFailedHandler = (errorInfo: any) => {
@@ -27,7 +40,7 @@ export default function index() {
         <Form onFinish={OnFinishHandler} onFinishFailed={OnFinishFailedHandler}>
           <FormInput
             prefix={<UserOutlined />}
-            name="user_name"
+            name="username"
             placeHolder="Username"
             rule="Please enter your username"
           />
@@ -48,7 +61,7 @@ export default function index() {
           </StyledForgotPasswordButton>
         </Form>
       </LoginWrapper>
-      <StyledSection></StyledSection>
+      <StyledSection />
     </Wrapper>
   );
 }
@@ -70,14 +83,13 @@ const StyledTitle = styled(Typography.Text)`
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 4px;
-
 `;
 
 const StyledSubTitle = styled(Typography.Text)`
   font-size: 14px;
   font-weight: 700;
   color: #b8babc;
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 `;
 
 const StyledSection = styled.div`
